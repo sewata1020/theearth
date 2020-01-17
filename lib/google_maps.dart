@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:the_earth/setting.dart';
 
 class GoogleMaps extends StatefulWidget {
   @override
@@ -56,7 +57,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
                   child: Text(
                     'メニュー',
                     style: TextStyle(
-                      fontSize: 50,
+                      fontSize: 40,
                       color: Colors.white,
                     ),
                   ),
@@ -79,17 +80,23 @@ class _GoogleMapsState extends State<GoogleMaps> {
                 ListTile(
                   title: Text('設定'),
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        settings: RouteSettings(name: "/setting"),
+                          builder: (BuildContext context) => Setting(),
+                      ),
+                    );
                   },
                 ),
                 ListTile(
-                  title: Text('ログアウト'),
+                  title: Text('マイページ'),
                   onTap: () {
                     Navigator.pop(context);
                   },
                 ),
                 ListTile(
-                  title: Text('ex'),
+                  title: Text('ログアウト'),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -104,9 +111,12 @@ class _GoogleMapsState extends State<GoogleMaps> {
               LatLng(currentLocation.latitude, currentLocation.longitude),
               zoom: 17.0,
             ),
+
             myLocationEnabled: true,
+              mapType: MapType.hybrid
           ),
         ),
+
       );
     }
   }
