@@ -7,11 +7,20 @@ class Setting extends StatelessWidget {
     return new MaterialApp(
       home: new Scaffold(
         appBar: new AppBar(
+
           title: new Text('設定'),
+
+          backgroundColor: Colors.grey[600],
         ),
         body: new Center(
-          child: new Text('設定画面だよ'),
+          child: RaisedButton(
+            child: Text('Back'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
         ),
+
       ),
     );
   }
