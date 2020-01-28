@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
-
-import 'google_maps.dart';
+import 'package:the_earth/MapPage.dart';
+import 'Entry.dart';
+import 'bear.dart';
+import 'setting.dart';
 
 void main() => runApp(MyApp());
 
-
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Maps',
+      routes: <String, WidgetBuilder> {
+        '/entry': (BuildContext context) => new ExpansionTileSample(),
+        '/setting': (BuildContext context) => new Setting(),
+        '/bear': (BuildContext context) => new BearPage(),
+      },
+      title: 'The Earth',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: GoogleMaps(),
+      home: const MapPage(),
     );
   }
 }
